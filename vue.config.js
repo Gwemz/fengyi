@@ -64,5 +64,26 @@ module.exports = {
     // 第三方插件的选项
     pluginOptions: {
        
+    },
+    devServer: {
+        // 查阅 https://github.com/vuejs/vue-docs-zh-cn/blob/master/vue-cli/cli-service.md#配置代理
+        // proxyTable: {
+        //     '/api':{
+        //         target: 'http://localhost:8080',
+        //         pathRewrite: {
+        //             '^/api': '/static/data'
+        //         }
+        //     }
+        // }, // string | Object
+        proxy: {
+            '/api': {
+              target: 'http://localhost:8080',
+              ws: true,
+              changeOrigin: true,
+              pathRewrite: {
+                '^/api': '/static/data'
+              }
+            }
+        }
     }
 }

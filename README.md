@@ -34,3 +34,14 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### 修改编译后(npm run build)文件名及路径
+
+新建vue.config.js，添加配置：
+
+```
+publicPath: './',
+
+// 将构建好的文件输出到哪里
+outputDir: 'docs'
+```
