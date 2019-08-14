@@ -1,12 +1,11 @@
 <template>
     <div class="container">
         <!-- 奉壹杂记 -->
-        <div class="article" v-for="item of articleList" :key="item.id">
-            <div class="title"><span class="item-title">{{item.title}}</span><span class="tags" v-for="tag of item.tags" :key="tag">{{tag}}</span></div>
-            <div class="desc">{{item.desc}}</div>
-            <div class="createTime cuIcon-time">{{item.created_at | formatDate}}</div>
-            <!-- <img src="../../../static/data/logo.png" alt=""> -->
-        </div>
+        <router-link tag="div" class="article" v-for="item of articleList" :key="item.id" :to="'/detail/'+item.id">
+          <div class="title"><span class="item-title">{{item.title}}</span><span class="tags" v-for="tag of item.tags" :key="tag">{{tag}}</span></div>
+          <div class="desc">{{item.desc}}</div>
+          <div class="createTime cuIcon-time">{{item.created_at | formatDate}}</div>
+        </router-link>
     </div>
 </template>
 
@@ -26,7 +25,7 @@ export default {
   methods:{
     getArticles(){
       let temp = this;
-      axios.get('data/articles.json')
+      axios.get('/api/articles.json')
       .then((res)=>{
         let data = res.data;
         temp.articleList = data.data;
