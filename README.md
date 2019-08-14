@@ -3,7 +3,11 @@
 
 小程序二维码：
 
-![qrcode](http://imgs.wdcorner.cn/fenyi.jpg)
+![small_code](https://cloud-minapp-28173.cloud.ifanrusercontent.com/1hxoiWV1EXQmRLPJ.png)
+
+Wap端二维码：
+
+![wap_code](https://cloud-minapp-28173.cloud.ifanrusercontent.com/1hxokX7pXB2FUzqO.png)
 
 vue-cli版本从2.9.6变为3.10.0
 
@@ -49,5 +53,10 @@ outputDir: 'docs'
 问题：
 
 1. 路由中配置model:history导致页面打包后空白
+
+```
+mode:'history',
+base: '/fengyi',  (配置为对应项目目录名，不然直接从根目录往下找) 本地开发不需要加该配置
+```
 
 2. v-html动态渲染内容添加样式
