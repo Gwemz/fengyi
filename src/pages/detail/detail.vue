@@ -20,10 +20,10 @@ export default {
     getDetailInfo(){
       let _id = this.$route.params.id,
         temp = this;
+      axios.get('https://gwem.top/fengyi/data/articles.json')
       // axios.get('/api/articles.json')
-      axios.get('/api/article')
         .then((res)=>{
-          let articles = res.data.data.data,
+          let articles = res.data.data,
             article = '';
           for(let i in articles){
             if(articles[i].id === _id){

@@ -1,8 +1,8 @@
-const express = require('express');
-const app = express();
-const appData = require('./public/data/articles.json');
-var apiRoutes = express.Router();
-app.use('/api',apiRoutes)
+// const express = require('express');
+// const app = express();
+// const appData = require('./public/data/articles.json');
+// var apiRoutes = express.Router();
+// app.use('/api',apiRoutes)
 module.exports = {
     // 项目部署的基础路径
     // 我们默认假设你的应用将会部署在域名的根部，
@@ -84,13 +84,13 @@ module.exports = {
       //     }
       //   }
       // }
-      before(app){
-        app.get('/api/article',(req,res)=>{
-          res.json({
-            errno: 0,
-            data: appData
-          })
-        })
-      }
+      // before(app){
+      //   app.get('/api/article',(req,res)=>{
+      //     res.json({
+      //       errno: 0,
+      //       data: appData
+      //     })
+      //   })
+      // }
     }
 }

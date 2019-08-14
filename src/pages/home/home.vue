@@ -26,9 +26,9 @@ export default {
     getArticles(){
       let temp = this;
       // axios.get('/api/articles.json')
-      axios.get('/api/article')
+      axios.get('https://gwem.top/fengyi/data/articles.json')
       .then((res)=>{
-        let data = res.data.data;
+        let data = res.data;
         temp.articleList = data.data;
         // console.log(data.data);
       })
