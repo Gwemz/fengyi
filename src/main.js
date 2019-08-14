@@ -9,7 +9,15 @@ import fastClick from 'fastclick'
 Vue.config.productionTip = false
 fastClick.attach(document.body)
 
+router.beforeEach((to,from,next) => {
+  if(to.meta.title){
+    document.title = to.meta.title
+  }
+  next()  //执行后续代码操作
+})
+
 new Vue({
   render: h => h(App),
-  router
+  router,
 }).$mount('#app')
+
