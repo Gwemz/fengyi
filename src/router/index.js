@@ -7,7 +7,8 @@ import Detail from '@/pages/detail/detail'
 Vue.use(Router);
 
 export default new Router({
-    // mode:'history',
+    mode:'history',
+    base: '/fengyi',
     routes: [{
         path:'/',
         name:'Home',

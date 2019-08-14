@@ -45,3 +45,9 @@ publicPath: './',
 // 将构建好的文件输出到哪里
 outputDir: 'docs'
 ```
+
+问题：
+
+1. 路由中配置model:history导致页面打包后空白
+
+2. v-html动态渲染内容添加样式
