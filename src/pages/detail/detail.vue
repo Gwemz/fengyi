@@ -1,5 +1,9 @@
 <template>
-  <div>文章详情页</div>
+  <div>
+    <div>文章详情页</div>
+    <div>{{article.title}}</div>
+    <div>{{article.content}}</div>
+  </div>
 </template>
 
 <script>
@@ -14,10 +18,18 @@ export default {
   },
   methods: {
     getDetailInfo(){
-      console.log(this.$route.params);
+      let _id = this.$route.params.id,
+        temp = this;
       axios.get('/api/articles.json')
         .then((res)=>{
-          console.log(res);
+          let articles = res.data.data,
+            article = '';
+          for(let i in articles){
+            if(articles[i].id === _id){
+              article = articles[i]
+            }
+          }
+          temp.article = article
         })
     }
   },
