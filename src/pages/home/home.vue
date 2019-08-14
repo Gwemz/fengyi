@@ -25,9 +25,10 @@ export default {
   methods:{
     getArticles(){
       let temp = this;
-      axios.get('/api/articles.json')
+      // axios.get('/api/articles.json')
+      axios.get('/api/article')
       .then((res)=>{
-        let data = res.data;
+        let data = res.data.data;
         temp.articleList = data.data;
         // console.log(data.data);
       })

@@ -20,9 +20,10 @@ export default {
     getDetailInfo(){
       let _id = this.$route.params.id,
         temp = this;
-      axios.get('/api/articles.json')
+      // axios.get('/api/articles.json')
+      axios.get('/api/article')
         .then((res)=>{
-          let articles = res.data.data,
+          let articles = res.data.data.data,
             article = '';
           for(let i in articles){
             if(articles[i].id === _id){

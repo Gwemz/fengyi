@@ -1,3 +1,8 @@
+const express = require('express');
+const app = express();
+const appData = require('./public/data/articles.json');
+var apiRoutes = express.Router();
+app.use('/api',apiRoutes)
 module.exports = {
     // 项目部署的基础路径
     // 我们默认假设你的应用将会部署在域名的根部，
@@ -67,17 +72,25 @@ module.exports = {
     },
     devServer: {
       // 查阅 https://github.com/vuejs/vue-docs-zh-cn/blob/master/vue-cli/cli-service.md#配置代理
-      proxy: {
-        '/api': {
-          target: 'http://localhost:8080',
-          // target: '/',
-          ws: true,
-          changeOrigin: true,
-          secure: false,
-          pathRewrite: {
-            '^/api': '/data'
-          }
-        }
+      // proxy: {
+      //   '/api': {
+      //     target: 'http://localhost:8080',
+      //     // target: '/',
+      //     ws: true,
+      //     changeOrigin: true,
+      //     secure: false,
+      //     pathRewrite: {
+      //       '^/api': '/data'
+      //     }
+      //   }
+      // }
+      before(app){
+        app.get('/api/article',(req,res)=>{
+          res.json({
+            errno: 0,
+            data: appData
+          })
+        })
       }
     }
 }
