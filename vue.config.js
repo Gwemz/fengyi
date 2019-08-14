@@ -12,7 +12,7 @@ module.exports = {
     outputDir: 'docs',
 
     // 放置静态资源的地方 (js/css/img/font/...)
-    // assetsDir: '',
+    assetsDir: '',
 
     // 是否在保存的时候使用 `eslint-loader` 进行检查。
     // 有效的值：`ture` | `false` | `"error"`
@@ -67,21 +67,14 @@ module.exports = {
     },
     devServer: {
         // 查阅 https://github.com/vuejs/vue-docs-zh-cn/blob/master/vue-cli/cli-service.md#配置代理
-        // proxyTable: {
-        //     '/api':{
-        //         target: 'http://localhost:8080',
-        //         pathRewrite: {
-        //             '^/api': '/static/data'
-        //         }
-        //     }
-        // }, // string | Object
         proxy: {
             '/api': {
               target: 'http://localhost:8080',
               ws: true,
-              changeOrigin: true,
+            //   changeOrigin: true,
+              secure: false,
               pathRewrite: {
-                '^/api': '/static/data'
+                '^/api': ''
               }
             }
         }

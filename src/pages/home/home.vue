@@ -1,10 +1,10 @@
 <template>
     <div class="container">
         <!-- 奉壹杂记 -->
-        <div class="article">
-            <div class="title"><span class="item-title">PC小程序公测</span><span class="tags">小程序</span></div>
-            <div class="desc">8号小程序公测，配合开发工具版本：1.02.1908082，微信版本：微信测试版2.7.0.65 </div>
-            <div class="createTime cuIcon-time">2019-08-12 11:21:00</div>
+        <div class="article" v-for="item of articleList" :key="item.id">
+            <div class="title"><span class="item-title">{{item.title}}</span><span class="tags" v-for="tag of item.tags" :key="tag">{{tag}}</span></div>
+            <div class="desc">{{item.desc}}</div>
+            <div class="createTime cuIcon-time">{{item.created_at | formatDate}}</div>
             <!-- <img src="../../../static/data/logo.png" alt=""> -->
         </div>
     </div>
@@ -12,6 +12,7 @@
 
 <script>
 import axios from 'axios'
+import moment from 'moment'
 export default {
   name: 'home',
   props: {
@@ -19,17 +20,29 @@ export default {
   },
   data(){
     return {
-        articleList:[]
+      articleList:[]
     }
   },
   methods:{
     getArticles(){
-        axios.get('/api/articles.json')
-        .then()
+      let temp = this;
+      axios.get('/data/articles.json')
+      .then((res)=>{
+        let data = res.data;
+        temp.articleList = data.data;
+        // console.log(data.data);
+      })
     }
   },
   mounted(){
     this.getArticles()
+  },
+  filters: {
+    formatDate: function (value,formatString) {// 时间戳转换日期格式方法
+      formatString = formatString || 'YYYY-MM-DD HH:mm:ss';
+      value = value * 1000  //将秒数时间戳转换为毫秒时间戳
+      return moment(value).format(formatString)
+    }
   }
 }
 </script>
