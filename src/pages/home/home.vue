@@ -26,7 +26,7 @@ export default {
   methods:{
     getArticles(){
       let temp = this;
-      axios.get('/data/articles.json')
+      axios.get('data/articles.json')
       .then((res)=>{
         let data = res.data;
         temp.articleList = data.data;
