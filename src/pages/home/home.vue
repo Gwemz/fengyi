@@ -6,6 +6,7 @@
         <div class="desc">{{item.desc}}</div>
         <div class="createTime cuIcon-time">{{item.created_at | formatDate}}</div>
       </router-link>
+      <router-link tag="div" class="about-btn" :to="'/about'">关于</router-link>
     </div>
 </template>
 
@@ -75,4 +76,17 @@ export default {
         font-size: .305rem
       .tags
         margin:0 .1rem
+    .about-btn
+      width: 1.18rem
+      height: 1.18rem
+      background: #ffffff
+      position: fixed
+      bottom: 1.8rem
+      right: .5rem
+      color: #e54d42
+      font-size: .27rem
+      text-align: center
+      line-height: 1.18rem
+      border-radius: 50%
+      box-shadow:0px .2rem .3rem 0px rgba(0,0,0,0.4)
 </style>
