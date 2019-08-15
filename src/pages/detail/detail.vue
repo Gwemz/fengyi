@@ -1,13 +1,14 @@
 <template>
   <div class="container">
     <div class="title">{{article.title}}</div>
-    <div class="content" v-html="article.content"></div>
+    <div class="content markdown-body" v-html="article.content"></div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import {markdown} from 'markdown'
+// import {markdown} from 'markdown'
+import showdown from 'showdown'
 export default {
   name: 'detail',
   data(){
@@ -19,7 +20,8 @@ export default {
   methods: {
     getDetailInfo(){
       let _id = this.$route.params.id,
-        temp = this;
+        temp = this,
+        converter = new showdown.Converter();
       axios.get('https://gwem.top/fengyi/data/articles.json')
       // axios.get('/api/articles.json')
         .then((res)=>{
@@ -30,7 +32,8 @@ export default {
               article = articles[i]
             }
           }
-          article.content = markdown.toHTML(article.content)
+          // article.content = markdown.toHTML(article.content)
+          article.content = converter.makeHtml(article.content)
           temp.article = article
           // console.log(markdown.toHTML(article.content))
         })
@@ -54,7 +57,12 @@ export default {
       width: 100%
       line-height: .6rem
     .title
-      font-size: .305rem  
+      font-size: 1.75em
+      line-height: 2em
+      margin-bottom: 1em
+      white-space:nowrap
+      overflow:hidden
+      text-overflow:ellipsis
     .content
       text-align: left
       >>> p, >>> img

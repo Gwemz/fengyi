@@ -4,6 +4,7 @@ import router from './router'
 import 'babel-polyfill'
 import './assets/styles/reset.css'
 import './assets/styles/border.css'
+import './assets/styles/markdown.css'
 import fastClick from 'fastclick'
 
 Vue.config.productionTip = false
