@@ -1,12 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import preview from 'vue-photo-preview'
+import 'vue-photo-preview/dist/skin.css'
 import 'babel-polyfill'
 import './assets/styles/reset.css'
 import './assets/styles/border.css'
 import './assets/styles/markdown.css'
 import fastClick from 'fastclick'
 
+Vue.use(preview)
 Vue.config.productionTip = false
 fastClick.attach(document.body)
 

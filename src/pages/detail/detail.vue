@@ -34,6 +34,7 @@ export default {
           }
           // article.content = markdown.toHTML(article.content)
           article.content = converter.makeHtml(article.content)
+          // console.log(article.content);
           temp.article = article
           // console.log(markdown.toHTML(article.content))
         })

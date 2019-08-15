@@ -35,11 +35,10 @@ export default {
     }
   },
   mounted(){
-  // created(){
     this.getArticles()
   },
   filters: {
-    formatDate: function (value,formatString) {// 时间戳转换日期格式方法
+    formatDate(value,formatString) {// 时间戳转换日期格式方法
       formatString = formatString || 'YYYY-MM-DD HH:mm:ss';
       value = value * 1000  //将秒数时间戳转换为毫秒时间戳
       return moment(value).format(formatString)
