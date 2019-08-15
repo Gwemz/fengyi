@@ -14,21 +14,24 @@ export default new Router({
         name:'Home',
         component:Home,
         meta:{
-            title: '奉壹杂记'
+            title: '奉壹杂记',
+            keepAlive: true     //需要被缓存
         }
     },{
         path:'/about',
         name:'About',
         component: About,
         meta:{
-            title: '关于奉壹杂记'
+            title: '关于奉壹杂记',
+            keepAlive: false    //不需要被缓存
         }
     },{
         path:'/detail/:id',
         name:'Detail',
         component: Detail,
         meta:{
-            title: '文章详情'
+            title: '文章详情',
+            keepAlive: false    //不需要被缓存
         }
     }],
     scrollBehavior() {
