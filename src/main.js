@@ -7,9 +7,19 @@ import 'babel-polyfill'
 import './assets/styles/reset.css'
 import './assets/styles/border.css'
 import './assets/styles/markdown.css'
+import 'vue2-animate/dist/vue2-animate.min.css'
 import fastClick from 'fastclick'
+import VueLazyload from 'vue-lazyload'
 
 Vue.use(preview)
+Vue.use(VueLazyload,{
+  preLoad: 1.3,
+  error: 'data/logo.png',
+  loading: 'data/logo.png',
+  attempt: 1,
+  // the default is ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend']
+  listenEvents: [ 'scroll' ]
+})
 Vue.config.productionTip = false
 fastClick.attach(document.body)
 

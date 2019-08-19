@@ -1,14 +1,16 @@
 <template>
     <div class="container">
       <!-- 奉壹杂记 -->
-      <router-link tag="div" class="article" v-for="item of articleList" :key="item.id" :to="'/detail/'+item.id">
-        <div class="cover_box">
-          <img class="cover_pic" :src="item.cover_pic">
-        </div>
-        <div class="title"><span class="item-title">{{item.title}}</span><span class="tags" v-for="tag of item.tags" :key="tag">{{tag}}</span></div>
-        <div class="desc">{{item.desc}}</div>
-        <div class="createTime cuIcon-time">{{item.created_at | formatDate}}</div>
-      </router-link>
+      <transition-group name="fade" tag="div">
+        <router-link tag="div" class="article" v-for="item of articleList" :key="item.id" :to="'/detail/'+item.id">
+            <div class="cover_box">
+              <img class="cover_pic" v-lazy="item.cover_pic">
+            </div>
+            <div class="title"><span class="item-title">{{item.title}}</span><span class="tags" v-for="tag of item.tags" :key="tag">{{tag}}</span></div>
+            <div class="desc">{{item.desc}}</div>
+            <div class="createTime cuIcon-time">{{item.created_at | formatDate}}</div>
+        </router-link>
+      </transition-group>
       <router-link tag="div" class="about-btn" :to="'/about'">关于</router-link>
     </div>
 </template>
@@ -88,6 +90,8 @@ export default {
         overflow: hidden
         position: relative
         border-radius: .06rem
+        box-sizing: border-box
+        background: #ffffff
         img
           width: 100%
           position: absolute
