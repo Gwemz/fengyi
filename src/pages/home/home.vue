@@ -99,7 +99,9 @@ export default {
           bottom: 0
           margin: auto
       .title,.desc,.createTime
+        width: 100%
         padding:0 .2rem
+        box-sizing:border-box
       .desc
         line-height: .42rem
       .item-title
