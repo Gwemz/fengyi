@@ -9,6 +9,7 @@
 import axios from 'axios'
 // import {markdown} from 'markdown'
 import showdown from 'showdown'
+import { constants } from 'crypto';
 export default {
   name: 'detail',
   data(){
@@ -32,11 +33,19 @@ export default {
               article = articles[i]
             }
           }
-          // article.content = markdown.toHTML(article.content)
-          article.content = converter.makeHtml(article.content)
-          // console.log(article.content);
+          let content = converter.makeHtml(article.content);
+          let i = 1,
+            imgPic = [];
+          content.replace(/<img(.*?)>/gi,function(match,capture){
+            let srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i,
+              img = capture.match(srcReg)[1];
+            imgPic.push(img);
+            content = content.replace(capture,' preview="1" data-pswp-uid="'+ i +'" preview-text="图片'+ i +'" '+ capture)
+            i++;
+          })
+          console.log(imgPic);
+          article.content = content
           temp.article = article
-          // console.log(markdown.toHTML(article.content))
         })
     }
   },
