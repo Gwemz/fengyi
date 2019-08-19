@@ -2,6 +2,9 @@
     <div class="container">
       <!-- 奉壹杂记 -->
       <router-link tag="div" class="article" v-for="item of articleList" :key="item.id" :to="'/detail/'+item.id">
+        <div class="cover_box">
+          <img class="cover_pic" :src="item.cover_pic">
+        </div>
         <div class="title"><span class="item-title">{{item.title}}</span><span class="tags" v-for="tag of item.tags" :key="tag">{{tag}}</span></div>
         <div class="desc">{{item.desc}}</div>
         <div class="createTime cuIcon-time">{{item.created_at | formatDate}}</div>
@@ -51,7 +54,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" scoped>
   body
-    background: #f1f1f1
+    // background: #f1f1f1
+    // background: #e54d42
+    // background: #e1e1e1
   .container
     width: 100%
     padding:.5rem .288rem
@@ -59,21 +64,43 @@ export default {
     display: flex
     flex-direction: column
     align-items: center
+    // background: #e54d42
+    // background: #F0F0F0
+    background: #ffffff
     .article
       width:100%
-      padding: .1rem .2rem
+      // padding: .1rem .2rem
+      padding-bottom: .1rem
       box-sizing:border-box
       border-radius: .06rem
       background: #e54d42
+      // background: #ffffff
       color: #ffffff
+      // color: #333333
       font-size: .27rem
       line-height: .6rem
       margin-bottom: .4rem
       text-align: left
+      box-shadow: 0 .05rem .3rem rgba(0,0,0,.5)
+      .cover_box
+        width: 100%
+        height: 4.43rem
+        overflow: hidden
+        position: relative
+        border-radius: .06rem
+        img
+          width: 100%
+          position: absolute
+          top:0
+          bottom: 0
+          margin: auto
+      .title,.desc,.createTime
+        padding:0 .2rem
       .desc
         line-height: .42rem
       .item-title
         font-size: .305rem
+        // color: #000000
       .tags
         margin:0 .1rem
     .about-btn
